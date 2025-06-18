@@ -14,15 +14,32 @@ This pipeline:
 ## Requirements
 
 - bcftools
-- Python with cyvcf2, pandas, pyarrow, polars
-- Snakemake
+- Python 3.11+
+- [uv](https://docs.astral.sh/uv/) (recommended) or pip for Python package management
+
+## Setup
+
+1. Install Python dependencies:
+   ```bash
+   uv sync
+   ```
+   
+2. Check all requirements:
+   ```bash
+   ./check_requirements.sh
+   ```
+
+3. Download dbSNP data:
+   ```bash
+   ./download.sh
+   ```
 
 ## Usage
 
 1. Configure resources in `config.yaml`
 2. Run the pipeline:
    ```bash
-   snakemake --cluster "sbatch -p {resources.partition} --mem={resources.mem} -t {resources.time} -c {threads}" -j 50
+   snakemake --cluster "sbatch -p {resources.partition} --mem={resources.mem} -t {resources.time} -c {threads}" -j 23
    ```
 
 ## Output
@@ -30,3 +47,7 @@ This pipeline:
 - `output/dbSNP_156.bcf` - Full filtered BCF file
 - `output/dbSNP_156.chr*.bcf` - Per-chromosome BCF files  
 - `output/dbSNP_156.chr*.lookup.parquet` - Per-chromosome RSID lookup tables
+
+## Contact
+
+Email Josh Weinstock.
