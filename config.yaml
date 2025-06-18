@@ -1,0 +1,17 @@
+output_dir: "output"
+
+cluster:
+  partition: "nodes*"
+  
+resources:
+  convert_contig:
+    mem: "6G"
+    time: "07:30:00"
+    threads: 3
+  subset_BCF:
+    mem: "3G"
+    time: "03:30:00"  
+    threads: 2
+  convert_parquet:
+    mem: "8G"
+    time: "05:30:00"
